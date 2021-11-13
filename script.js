@@ -1,92 +1,65 @@
-class Location {
-  constructor (name, state_code, lat, lng) {
-    this.name = name
-    this.state_code = state_code
-    this.lat = lat
-    this.lng = lng
+const { Chart } = require("./chart");
+
+btnAggiorna.onclick = () => { //funzione aggiorna
+  aggiorna();
+}
+btnintervallo.onclick = () => { //quando intervallo viene premuto si istanziano 500 millesimi ovvero ogni quanto aggiornare il grafico
+  if (intervallo == null) {
+    document.getElementById("btnintervallo").innerHTML = "Ferma";
+    intervallo = setInterval(update, 500);
+  } else {
+    clearInterval(intervallo);
+    intervallo = null;
+    document.getElementById("btnintervallo").innerHTML = "Inizia";
   }
 }
-class Sensor {
-  constructor(description,id,lat,lng,place,readonly,state_code,value) {
-    this.description = description
-    this.id = id
-    this.readonly = readonly
-    this.value = value //value can be false or float
-    this.location = new Location (place, state_code, lat, lng)
+btnElimina.onclick = () => {
+  clearInterval(intervallo);
+  intervallo=null;
+  document.getElementById("json-container").innerHTML="";
+  cronologia.clear();
+  console.clear();
+}
+btnMostraCronologia.onclick = () => {
+  console.info(cronologia);
+}
+btnModifica.onclick = () => {
+  sensori.forEach(sensori => sensori.toggle())
+}
+btnMostraDati.onclick = () => {
+  console.info(sensori);
+}
+let sensori = [];
+let cronologia = new Map();
+var intervallo;
+/**
+ * https://www.chartjs.org
+ * GRAFICO
+ */
+const chart = new Chart(document.getElementById('chart').getContext('2d'), {
+  type: "line",
+  data: {
+    labels: [1,2,3,4,5,6,7,8,9,10], //xValues
+    datasets: [{
+      label: 'temperature-01',
+      backgroundColor: "rgba(255,0,0,1.0)",
+      borderColor: "rgba(0,0,0,0.1)",
+      data: history.get('temperature-01')
+    }, {
+      label: 'umidita-01',
+      backgroundColor: "rgba(0,255,0,1.0)",
+      borderColor: "rgba(0,0,0,0.1)",
+      data: history.get('umidita-01')
+    }, {
+      label: 'cleancode-01',
+      backgroundColor: "rgba(0,0,255,1.0)",
+      borderColor: "rgba(0,0,0,0.1)",
+      data: history.get('cleancode-01')
+    }, {
+      label: 'luce',
+      backgroundColor: "rgba(128,0,128,1.0)",
+      borderColor: "rgba(0,0,0,0.1)",
+      data: history.get('luce-01')
+    }]
   }
-  toggle() {
-    fetch('https://python-iot-sim.professorandrea.repl.co/'+this.id+'/toggle')
-    .then(response=>{
-      response.json()
-    }).then(data=> 
-      // this is the data we get after putting our data,
-      console.log(data)
-    );
-  }
-  static jsontosensor(json) {
-    return new Sensor(
-      json.description, json.id, json.lat, json.lng,
-      json.place, json.readonly, json.state_code, json.value);
-  }
-}
-
-function displayJson(url) {
-  $(document).ready(function() {
-    fetch(url).then(r => r.json())
-    .then(body => {
-      body['sensors'].forEach(
-        sensor => sensors.push(Sensor.jsontosensor(sensor))
-      )
-      console.log(sensors)
-      sensors.forEach(sensor=>{
-        if (sensor.value != false) {
-          if (history.has(sensor.id)) {
-            let array= history.get(sensor.id)
-            if (array,length >= 10){
-              array.shift();
-            }
-            array.push(sensor.value);
-            history.set(sensor.id,array)
-          } else {
-            history.set(sensor.id,[sensor.value])
-          }
-        }
-    })
-    })
-})
-} 
-
-
-function update() {
-  while(sensors.pop()) {}
-  console.log(sensors.length)
-  $("#json-container").html("");
-  displayJson("https://python-iot-sim.professorandrea.repl.co/")
-  console.log(sensors.length)
-}
-trigger.onclick = () => {
-  update()
-}
-clear.onclick = () => {
-  $("#json-container").html("");
-}
-let sensors = [];
-let storico = 0;
-let history= new Map();
-
-/*modify() {
-fetch('https://python-iot-sim.professorandrea.repl.co/',{
-    method:'PUT',
-    headers:{
-    'Content-Type':'application/json'
-    },
-    body:JSON.stringify(sensors)
-}).then(response=>{
-    return response.json()
-    }).then(data=> 
-// this is the data we get after putting our data,
-console.log(data)
-);
-}*/
-
-
+});
