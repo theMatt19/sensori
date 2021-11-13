@@ -1,9 +1,7 @@
-const { Chart } = require("./chart");
-
 btnAggiorna.onclick = () => { //funzione aggiorna
   aggiorna();
 }
-btnintervallo.onclick = () => { //quando intervallo viene premuto si istanziano 500 millesimi ovvero ogni quanto aggiornare il grafico
+btnIntervallo.onclick = () => { //quando intervallo viene premuto si istanziano 500 millesimi ovvero ogni quanto aggiornare il grafico
   if (intervallo == null) {
     document.getElementById("btnintervallo").innerHTML = "Ferma";
     intervallo = setInterval(update, 500);
@@ -44,22 +42,22 @@ const chart = new Chart(document.getElementById('chart').getContext('2d'), {
       label: 'temperature-01',
       backgroundColor: "rgba(255,0,0,1.0)",
       borderColor: "rgba(0,0,0,0.1)",
-      data: history.get('temperature-01')
+      data: cronologia.get('temperature-01')
     }, {
       label: 'umidita-01',
       backgroundColor: "rgba(0,255,0,1.0)",
       borderColor: "rgba(0,0,0,0.1)",
-      data: history.get('umidita-01')
+      data: cronologia.get('umidita-01')
     }, {
       label: 'cleancode-01',
       backgroundColor: "rgba(0,0,255,1.0)",
       borderColor: "rgba(0,0,0,0.1)",
-      data: history.get('cleancode-01')
+      data: cronologia.get('cleancode-01')
     }, {
       label: 'luce',
       backgroundColor: "rgba(128,0,128,1.0)",
       borderColor: "rgba(0,0,0,0.1)",
-      data: history.get('luce-01')
+      data: cronologia.get('luce-01')
     }]
   }
 });
