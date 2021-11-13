@@ -3,22 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
     <link rel="shortcut icon" href="#">
     <title>Document</title>
 </head>
 <body>
-  <div class="columns is-gapless">
-    <div class="column has-background-link-light">
-      <h1 class="title">Visualizzare e modificare i dati dei sensori</h1>
-      <button class='button has-text-light has-background-dark' id="trigger">Click me</button>
-      <button class='button has-text-light has-background-dark' id="clear">Clear</button>
+  <div class="columns coll-oneline bg-secondary">
+    <div class="column col-8">
+      <h1 class="title">Sensors (js exercise)</h1>
+      <button class='btn' id="btnAggiorna">aggiorna</button>
+      <button class='btn' id="btnIntervallo">inizio</button>
+      <button class='btn' id="btnElimina">elimina</button>
+      <button class='btn' id="btnModifica">modifica</button>
+      <button class='btn' id="btnMostraDati">Mostra dati</button>
+      <button class='btn' id="btnMostraCronologia">mostra cronologia</button>
+      <canvas id="chart"></canvas>
     </div>
-    <div class="column is-4 is-offset-1">
-      <pre class='box' style='max-height: 40em; font-size: large;' id="json-container"></pre>
+    <div class="column col-4">
+      <pre class="box" style="height: 40em;" id="json-container"></pre>
     </div>
   </div>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="js/chart.js"></script>
   <script src="js/script.js"></script>
+  <script src="js/sensor.js"></script>
+  <script src="js/updates.js"></script>
 </body>
 </html>
