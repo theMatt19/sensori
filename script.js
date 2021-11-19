@@ -3,12 +3,12 @@ btnAggiorna.onclick = () => { //funzione aggiorna
 }
 btnIntervallo.onclick = () => { //quando intervallo viene premuto si istanziano 500 millesimi ovvero ogni quanto aggiornare il grafico
   if (intervallo == null) {
-    document.getElementById("btnintervallo").innerHTML = "Ferma";
-    intervallo = setInterval(update, 500);
+    document.getElementById("btnIntervallo").innerHTML = "Ferma";
+    intervallo = setInterval(aggiorna, 500);
   } else {
     clearInterval(intervallo);
     intervallo = null;
-    document.getElementById("btnintervallo").innerHTML = "Inizia";
+    document.getElementById("btnIntervallo").innerHTML = "Inizia";
   }
 }
 btnElimina.onclick = () => {

@@ -13,14 +13,10 @@ class Sensore {
     fetch('https://hf3xzw.deta.dev/'+this.id+'/toggle', {
       method: 'PUT', 
     }).then(response => response.json())
-    .then(result => {
-    })
-    .catch(error => {
-      console.error('Error:', error)
-    })
+    .then(result => {})
   }
   print() { 
-    return this.id+": "+this.value+"<br>";
+    return this.id+": "+this.valore+"<br>";
   }
   static jsontosensor(json) {
     return new Sensore(
