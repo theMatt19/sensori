@@ -1,14 +1,20 @@
 # Sensors
 
-Description:
-leggere i dati (rigurdanti 8 sensori) forniti da un web service (API) e visualizzarli.
-successivamente questi dati vengono convertiti in una lista di oggetti per poterci lavorare.
-vengono memorizzati i valori (dei sensori readonly=true) in una hashmap per poter rappresentare il loro storico in un grafico.
-vengono modificati i valori (dei sensori readonly=false) con il pulsante toggle.
+Il programma ha come scopo di poter prelevare una serie di dati sui sensori(https://hf3xzw.deta.dev) e di poterli:
+-mostrare attraverso un grafico(o tabella) e nella console
+-modificare (Utilizzando una fetch di tipo "PUT")
+-aggiornare i dati automaticamente attraverso un timer
+-salvare tutti i dati ricevuti
+-cancellare i dati
 
-Libraries:
+Librerie:
 [chart](https://www.chartjs.org)
 [spectre](https://picturepan2.github.io/spectre/index.html)
 
-Personal comments:
-non ho creato le user stories (come richiesto) siccome ho seguito il roadmap e tenuto aggiornato per tutto il processo
+User story:
+voglio visualizzare le informazioni di un singolo sensore
+voglio visualizzare le informazioni di un array di sensory
+voglio visualizzare le informazioni nella pagina html
+voglio modificare le informazioni di un sensore
+voglio cancellare le informazioni ottenute e resettarle
+voglio visualizzare un grafico
