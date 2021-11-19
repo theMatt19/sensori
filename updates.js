@@ -1,17 +1,13 @@
-/**
- * 
- * @param {url} url
- */
 function aggiorna() {
   fetch("https://hf3xzw.deta.dev")
     .then(r => r.json())
     .then(body => {
-      sensori.length = 0
-      document.getElementById("json-container").innerHTML = ""
+      sensori.length = 0 //cancellare array
+      //trasformare da json ad array di sensori
       body['sensors'].forEach(sensore => {
         sensori.push(Sensore.jsontosensor(sensore))
       })
-      //html & history
+      //mostra i dati nella pagine html ed aggiorna la cronologia
       let risultato = '';
       sensori.forEach(sensore => {
         risultato += (sensore.print())
@@ -27,7 +23,7 @@ function aggiorna() {
         }
       })
       document.getElementById("json-container").innerHTML = risultato;
-      //chart
+      //aggiorna chart
       let indice = 0;
       cronologia.forEach((element, key) => {
         chart.data.datasets[indice].data = element;

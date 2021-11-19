@@ -1,7 +1,9 @@
 btnAggiorna.onclick = () => { //funzione aggiorna
   aggiorna();
 }
-btnIntervallo.onclick = () => { //quando intervallo viene premuto si istanziano 500 millesimi ovvero ogni quanto aggiornare il grafico
+//quando intervallo viene premuto si istanziano 
+//500 millesimi ovvero ogni quanto aggiornare il grafico
+btnIntervallo.onclick = () => { 
   if (intervallo == null) {
     document.getElementById("btnIntervallo").innerHTML = "Ferma";
     intervallo = setInterval(aggiorna, 500);
@@ -40,23 +42,19 @@ const chart = new Chart(document.getElementById('chart').getContext('2d'), {
     labels: [1,2,3,4,5,6,7,8,9,10], //xValues
     datasets: [{
       label: 'temperature-01',
-      backgroundColor: "rgba(255,0,0,1.0)",
-      borderColor: "rgba(0,0,0,0.1)",
+      borderColor: "rgba(255,0,0,1.0)",
       data: cronologia.get('temperature-01')
     }, {
       label: 'umidita-01',
-      backgroundColor: "rgba(0,255,0,1.0)",
-      borderColor: "rgba(0,0,0,0.1)",
+      borderColor: "rgba(0,255,0,1.0)",
       data: cronologia.get('umidita-01')
     }, {
       label: 'cleancode-01',
-      backgroundColor: "rgba(0,0,255,1.0)",
-      borderColor: "rgba(0,0,0,0.1)",
+      borderColor: "rgba(0,0,255,1.0)",
       data: cronologia.get('cleancode-01')
     }, {
       label: 'luce',
-      backgroundColor: "rgba(128,0,128,1.0)",
-      borderColor: "rgba(0,0,0,0.1)",
+      borderColor: "rgba(128,0,128,1.0)",
       data: cronologia.get('luce-01')
     }]
   }
