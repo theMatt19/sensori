@@ -17,7 +17,7 @@ function aggiorna() {
             if (temp.length >= 10) temp.shift();
             temp.push(sensore.valore)
             cronologia.set(sensore.id, temp)
-          }  else {
+          } else {
             cronologia.set(sensore.id, [sensore.valore])
           }
         }

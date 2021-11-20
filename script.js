@@ -3,7 +3,7 @@ btnAggiorna.onclick = () => { //funzione aggiorna
 }
 //quando intervallo viene premuto si istanziano 
 //750 millesimi ovvero ogni quanto aggiornare il grafico
-btnTimer.onclick = () => { 
+btnTimer.onclick = () => {
   if (timer == null) {
     document.getElementById("btnTimer").innerHTML = "Ferma";
     timer = setInterval(aggiorna, 750);
@@ -16,8 +16,8 @@ btnTimer.onclick = () => {
 //pone il timer come nullo svuota il container ed elimina la cronologia 
 btnElimina.onclick = () => {
   clearInterval(timer);
-  timer=null;
-  document.getElementById("json-container").innerHTML="";
+  timer = null;
+  document.getElementById("json-container").innerHTML = "";
   cronologia.clear();
   console.clear();
 }
@@ -40,7 +40,7 @@ var timer;
 const chart = new Chart(document.getElementById('chart').getContext('2d'), {
   type: "radar",
   data: {
-    labels: [1,2,3,4,5,6,7,8,9,10], //numero di sensori massimo 10
+    labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], //numero di sensori massimo 10
     datasets: [{
       label: 'temperatura',
       borderColor: "rgb(106, 90, 205)",
