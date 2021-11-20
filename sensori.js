@@ -9,7 +9,9 @@ class Sensore {
       this.stato=stato
       this.valore=valore
   }
-  toggle() { //funzione che ci permette di modificare i dati richiedendo una fetch di tipo "PUT"
+  //funzione che ci permette di modificare i dati 
+  //richiedendo una fetch di tipo "PUT"
+  toggle() { 
     fetch('https://hf3xzw.deta.dev/'+this.id+'/toggle', {
       method: 'PUT', 
     }).then(response => response.json())
@@ -18,6 +20,7 @@ class Sensore {
   print() { 
     return this.id+": "+this.valore+"<br>";
   }
+  //Converte i dati dal json in un sensore
   static jsontosensor(json) {
     return new Sensore(
       json.description, json.id, json.lat, json.lng,

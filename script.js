@@ -2,20 +2,21 @@ btnAggiorna.onclick = () => { //funzione aggiorna
   aggiorna();
 }
 //quando intervallo viene premuto si istanziano 
-//500 millesimi ovvero ogni quanto aggiornare il grafico
-btnIntervallo.onclick = () => { 
-  if (intervallo == null) {
-    document.getElementById("btnIntervallo").innerHTML = "Ferma";
-    intervallo = setInterval(aggiorna, 750);
+//750 millesimi ovvero ogni quanto aggiornare il grafico
+btnTimer.onclick = () => { 
+  if (timer == null) {
+    document.getElementById("btnTimer").innerHTML = "Ferma";
+    timer = setInterval(aggiorna, 750);
   } else {
-    clearInterval(intervallo);
-    intervallo = null;
-    document.getElementById("btnIntervallo").innerHTML = "Inizia";
+    clearInterval(timer);
+    timer = null;
+    document.getElementById("btnTimer").innerHTML = "Inizia";
   }
 }
+//pone il timer come nullo svuota il container ed elimina la cronologia 
 btnElimina.onclick = () => {
-  clearInterval(intervallo);
-  intervallo=null;
+  clearInterval(timer);
+  timer=null;
   document.getElementById("json-container").innerHTML="";
   cronologia.clear();
   console.clear();
@@ -23,6 +24,7 @@ btnElimina.onclick = () => {
 btnMostraCronologia.onclick = () => {
   console.info(cronologia);
 }
+//modifica il valore dei sensori
 btnModifica.onclick = () => {
   sensori.forEach(sensori => sensori.toggle())
 }
@@ -31,14 +33,14 @@ btnMostraDati.onclick = () => {
 }
 let sensori = [];
 let cronologia = new Map();
-var intervallo;
+var timer;
 /**
  * https://www.chartjs.org
  */
 const chart = new Chart(document.getElementById('chart').getContext('2d'), {
   type: "radar",
   data: {
-    labels: [1,2,3,4,5,6,7,8,9,10], //numero di valori massimi 
+    labels: [1,2,3,4,5,6,7,8,9,10], //numero di sensori massimo 10
     datasets: [{
       label: 'temperatura',
       borderColor: "rgb(106, 90, 205)",
