@@ -8,20 +8,16 @@
   <link rel="shortcut icon" href="#">
   <title>Sensori</title>
   <style>
-    .button1 {
-      background-color: rgb(179, 13, 82);
-      color: rgb(243, 234, 234);
-      margin: 4px 2px;
-    }
-
-    .button2 {
-      background-color: #10ec65;
-      color: rgb(13, 26, 26);
+    .button{
+      background-color: #f1f1fc;
+      color: rgb(1, 17, 17);
+      border-radius: 5px;
       margin: 4px 2px;
     }
 
     .title {
-      color: rgb(30, 182, 182);
+      text-align: center;   
+      color: rgb(15, 15, 15);
     }
   </style>
 </head>
@@ -30,13 +26,13 @@
   <div class="columns coll-oneline bg-secondary">
     <div class="column col-8">
       <h1 class="title">Sensori</h1>
-      <div class="uk-align-center">
-        <button class='button1' id="btnTimer">Inizio</button>
-        <button class='button2' id="btnAggiorna">Aggiorna</button>
-        <button class='button1' id="btnModifica">Modifica</button>
-        <button class='button2' id="btnElimina">Elimina</button>
-        <button class='button1' id="btnMostraCronologia">Mostra cronologia</button>
-        <button class='button2' id="btnMostraDati">Mostra dati</button>
+      <div class="uk-align-center" style="text-align: center;">
+        <button class='button' id="btnTimer">Inizio</button>
+        <button class='button' id="btnAggiorna">Aggiorna</button>
+        <button class='button' id="btnModifica">Modifica</button>
+        <button class='button' id="btnElimina">Elimina</button>
+        <button class='button' id="btnMostraCronologia">Mostra cronologia</button>
+        <button class='button' id="btnMostraDati">Mostra dati</button>
       </div>
       <canvas id="chart"></canvas>
     </div>

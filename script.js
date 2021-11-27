@@ -43,7 +43,7 @@ const chart = new Chart(document.getElementById('chart').getContext('2d'), {
     labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], //numero di sensori massimo 10
     datasets: [{
       label: 'temperatura',
-      borderColor: "rgb(106, 90, 205)",
+      borderColor: "rgb(255, 0, 0)",
       data: cronologia.get('temperatura')
     }, {
       label: 'umidità',
@@ -51,11 +51,11 @@ const chart = new Chart(document.getElementById('chart').getContext('2d'), {
       data: cronologia.get('umidità')
     }, {
       label: 'cleancode',
-      borderColor: "rgb(60, 179, 113)",
+      borderColor: "rgb(45, 237, 2)",
       data: cronologia.get('cleancode')
     }, {
       label: 'luce',
-      borderColor: "rgb(255, 165, 150)",
+      borderColor: "rgb(2, 96, 237)",
       data: cronologia.get('luce')
     }]
   }
